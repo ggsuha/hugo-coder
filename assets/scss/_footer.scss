@@ -8,4 +8,10 @@
   a {
     color: $link-color;
   }
+
+  .container {
+    .heart::after {
+      content: "💙";
+    }
+  }
 }

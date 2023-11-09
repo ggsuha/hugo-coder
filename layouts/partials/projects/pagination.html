@@ -1,0 +1,20 @@
+{{ $paginator := .Paginator }}
+{{ $adjacent_links := 2 }}
+{{ $max_links := (add (mul $adjacent_links 2) 1) }}
+{{ $lower_limit := (add $adjacent_links 1) }}
+{{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
+{{ if gt $paginator.TotalPages 1 }}
+<div class="paginate-simple">
+  {{ if $paginator.HasPrev }}
+  <button id="prev-page" aria-label="Prev Page"><a href="{{ $paginator.Prev.URL }}"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a></button>
+  {{ else }}
+  <button id="prev-page" aria-label="Prev Page" disabled><a href="#"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a></button>
+  {{ end }}
+
+  {{ if $paginator.HasNext }}
+  <button id="next-page" aria-label="Next Page"><a href="{{ $paginator.Next.URL }}"><i class="fa fa-3x fa-angle-right" aria-hidden="true"></i></a></button>
+  {{ else }}
+  <button id="next-page" aria-label="Next Page" disabled><a href="#"><i class="fa fa-3x fa-angle-right" aria-hidden="true"></i></a></button>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,13 @@
+<footer>
+  <section class="built-with">
+    <h1 class="title">Built with:</h1>
+    <div class="tech">
+      {{ range .Params.techs}}
+      <div class="tooltip">
+        <img loading="lazy" src="{{ .image }}" alt="{{ .name }}">
+        <span>{{ .name }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+</footer>

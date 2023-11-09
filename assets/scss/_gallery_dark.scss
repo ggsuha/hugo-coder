@@ -1,0 +1,17 @@
+
+
+@mixin gallery_dark {
+  .gallery {
+    box-shadow: rgba(255, 255, 255, 0.071) 0px 1px 4px 2px;
+  }
+}
+
+body.colorscheme-dark {
+  @include gallery_dark();
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    @include gallery_dark();
+  }
+}

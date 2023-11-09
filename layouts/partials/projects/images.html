@@ -1,0 +1,18 @@
+<div class="gallery-container">
+  <div class="gallery-column">
+    {{ range .Params.images}}
+    <a target="_blank" href="{{ .url }}">
+      <img class="gallery" loading="lazy" src="{{ .url }}" alt="{{ .title }}" />
+    </a>
+    {{ end }}
+  </div>
+  {{ if .Params.rightImages }}
+  <div class="gallery-column">
+    {{ range .Params.rightImages}}
+    <a target="_blank" href="{{ .url }}">
+      <img class="gallery" loading="lazy" src="{{ .url }}" alt="{{ .title }}" />
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>

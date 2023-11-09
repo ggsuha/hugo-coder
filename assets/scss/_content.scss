@@ -242,3 +242,72 @@
     }
   }
 }
+
+.link {
+  width: 100%;
+  margin-top: 1em;
+  display: inline-flex;
+
+  .button {
+    border: 2px solid #212121;
+    border-radius: 5px;
+    padding: 10px 25px;
+    background: #fff;
+    color: #212121;
+    margin: 0 auto;
+  }
+
+  .button:hover {
+    background: #dadada;
+  }
+}
+
+
+.built-with {
+  .title {
+    font-size: 1em;
+  }
+
+  .tech {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem;
+  }
+
+  .tooltip:hover span {
+    opacity: 1;
+    transform: translate(-5em, -2.5em);
+  }
+  .tooltip span {
+    position: absolute;
+    opacity: 0;
+    padding: 0.5em;
+    color: #dadada;
+    background-color: #212121;
+    font-size: 0.6em;
+    line-height: 1.6;
+    text-align: left;
+    white-space: nowrap;
+    transform: translate(-5em, -2.5em);
+    transition: all 0.15s ease-in-out;
+  }
+  .tooltip span::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 0.5em solid transparent;
+    border-top-color: #212121;
+    transform: translate(-60%, 0);
+  }
+}

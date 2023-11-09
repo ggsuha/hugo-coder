@@ -1,0 +1,29 @@
+@mixin pagination_dark {
+  .paginate-simple  {
+    a,
+    button {
+      color: #dadada;
+    }
+
+    a:hover,
+    a:focus,
+    button:hover:not([disabled]),
+    button:focus {
+      color: #42a5f5;
+    }
+
+    button:disabled {
+      opacity: 70%;
+    }
+  }
+}
+
+body.colorscheme-dark {
+  @include pagination_dark();
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    @include pagination_dark();
+  }
+}

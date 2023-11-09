@@ -25,3 +25,34 @@
     }
   }
 }
+
+.paginate-simple {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 20%;
+
+  a, button {
+    color: #212121;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
+  a:hover,
+  a:focus,
+  button:hover:not([disabled]),
+  button:focus {
+    color: #1565c0;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: default;
+    opacity: 50%;
+  }
+}

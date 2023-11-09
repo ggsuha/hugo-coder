@@ -29,6 +29,17 @@
       }
     }
 
+    .project {
+      .title {
+        color: $fg-color-dark;
+
+            &:hover,
+            &:focus {
+              color: $link-color-dark;
+            }
+      }
+    }
+
     .centered {
       .about {
         ul {
@@ -44,6 +55,39 @@
           }
         }
       }
+    }
+  }
+
+  .link {
+    width: 100%;
+    margin-top: 1em;
+    display: inline-flex;
+
+    .button {
+      border: 2px solid #dadada;
+      border-radius: 5px;
+      padding: 10px 25px;
+      background: #212121;
+      color: #dadada;
+      margin: 0 auto;
+    }
+
+    .button:hover {
+      background: #3b3b3b;
+    }
+  }
+
+  .built-with {
+    .tech img {
+      filter: invert(0.9);
+    }
+    span {
+      color: #212121;
+      background-color: #dadada;
+    }
+
+    .tooltip span::before {
+      border-top-color: #dadada;
     }
   }
 }

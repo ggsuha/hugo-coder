@@ -1,0 +1,64 @@
+.project {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.project .item {
+  width: 50%;
+  position: relative;
+  margin-bottom: 2rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.project .item:nth-child(even) {
+  padding-left: 2rem;
+}
+.project .item:nth-child(odd) {
+  padding-right: 2rem;
+}
+.project .item:last-child:nth-child(even) {
+  margin-bottom: 0;
+  justify-self: flex-start;
+}
+.project .item .description {
+  margin-top: 1rem;
+  /* text-align: justify;
+  text-justify: inter-word; */
+}
+@media only screen and (max-width: 768px) {
+  .project .item {
+      width: 100%;
+      position: relative;
+      margin-bottom: 2rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+  }
+  .project .item:nth-child(even) {
+      padding-left: 0;
+  }
+  .project .item:nth-child(odd) {
+      padding-right: 0;
+  }
+}
+
+.list ul li .title,
+.project .title {
+  font-size: 1.8rem;
+  flex: 2;
+  color: #212121;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック,
+      pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体,
+      Heiti, 黑体, sans-serif;
+  font-weight: 700;
+}
+.list ul li .title:hover,
+.list ul li .title:focus,
+.project .title:hover,
+.project .title:focus {
+  color: #1565c0;
+}

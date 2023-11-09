@@ -3,6 +3,12 @@
     a {
       color: $link-color-dark;
     }
+
+  .container {
+    .heart::after {
+      content: "🤍";
+    }
+  }
   }
 }
 

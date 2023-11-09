@@ -1,0 +1,32 @@
+{{ define "title" }} {{ .Title }} · {{ .Site.Title }} {{ end }} {{ define
+"content" }}
+<section class="container post">
+  <article>
+    <header>
+      <div class="post-title">
+        <h1 class="title">
+          <a class="title-link" href="{{ .Permalink | safeURL }}">
+            {{ .Title }}
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <div class="post-content">
+      {{ if .Params.featuredImage }}
+      <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image" />
+      {{ end }} {{ .Content }}
+    </div>
+
+    {{ if .Params.images }} {{ partial "projects/images.html" . }} {{ end }}
+
+    {{ if .Params.demoLink }}
+    <div class="link">
+      <a href="{{ .Params.demoLink }}" class="button">See Project</a>
+    </div>
+    {{ end }}
+
+    {{ if .Params.techs }} {{ partial "projects/techs.html" . }} {{ end }}
+  </article>
+</section>
+{{ end }}
