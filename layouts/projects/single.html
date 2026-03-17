@@ -14,15 +14,15 @@
 
     <div class="post-content">
       {{ if .Params.featuredImage }}
-      <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image" />
+      <img src="{{ .Params.featuredImage | relURL }}" alt="Featured image" loading="eager" decoding="async" fetchpriority="high" />
       {{ end }} {{ .Content }}
     </div>
 
-    {{ if .Params.images }} {{ partial "projects/images.html" . }} {{ end }}
+    {{ if .Params.projectImages }} {{ partial "projects/images.html" . }} {{ end }}
 
     {{ if .Params.demoLink }}
     <div class="link">
-      <a href="{{ .Params.demoLink }}" class="button">See Project</a>
+      <a href="{{ .Params.demoLink }}" target="_blank" rel="noopener noreferrer" class="button">See Project</a>
     </div>
     {{ end }}
 

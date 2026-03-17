@@ -3,8 +3,8 @@
     <a class="navigation-title" href="{{ .Site.BaseURL | relLangURL }}">
       {{ .Site.Title }}
     </a>
-    {{ if or .Site.Menus.main .Site.IsMultiLingual }}
-      <input type="checkbox" id="menu-toggle" />
+    {{ if or .Site.Menus.main (gt (len .Site.Languages) 1) }}
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle navigation menu" />
       <label class="menu-button float-right" for="menu-toggle">
         <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
       </label>
@@ -12,11 +12,12 @@
         {{ with .Site.Menus.main}}
           {{ range sort . }}
             <li class="navigation-item">
-              <a class="navigation-link" href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}">{{ .Name }}</a>
+              {{ $target := .Params.target | default "" }}
+              <a class="navigation-link" href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}"{{ with $target }} target="{{ . }}"{{ end }}{{ if eq $target "_blank" }} rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
             </li>
           {{ end }}
         {{ end }}
-        {{ if .Site.IsMultiLingual }}
+        {{ if gt (len .Site.Languages) 1 }}
           {{ $node := . }}
           {{ .Scratch.Set "separator" true }}
           {{ range (default .Site.Home.AllTranslations .Translations) }}

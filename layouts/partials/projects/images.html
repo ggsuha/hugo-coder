@@ -1,16 +1,16 @@
 <div class="gallery-container">
   <div class="gallery-column">
-    {{ range .Params.images}}
-    <a target="_blank" href="{{ .url }}">
-      <img class="gallery" loading="lazy" src="{{ .url }}" alt="{{ .title }}" />
+    {{ range .Params.projectImages}}
+    <a target="_blank" rel="noopener noreferrer" href="{{ .url }}">
+      <img class="gallery" loading="lazy" decoding="async" src="{{ .url }}" alt="{{ .title }}" />
     </a>
     {{ end }}
   </div>
   {{ if .Params.rightImages }}
   <div class="gallery-column">
     {{ range .Params.rightImages}}
-    <a target="_blank" href="{{ .url }}">
-      <img class="gallery" loading="lazy" src="{{ .url }}" alt="{{ .title }}" />
+    <a target="_blank" rel="noopener noreferrer" href="{{ .url }}">
+      <img class="gallery" loading="lazy" decoding="async" src="{{ .url }}" alt="{{ .title }}" />
     </a>
     {{ end }}
   </div>
