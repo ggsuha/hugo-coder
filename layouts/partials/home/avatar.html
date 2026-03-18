@@ -1,6 +1,12 @@
 {{ if and (isset .Site.Params "avatarurl") (not (isset .Site.Params "gravatar")) }}
   {{ with .Site.Params.avatarURL }}
-    <div class="avatar"><img src="{{ . | relURL }}" alt="avatar" width="240" height="240" loading="eager" decoding="async" fetchpriority="high"></div>
+    {{ $avatarURL := . }}
+    {{ if hasSuffix $avatarURL ".webp" }}
+      {{ $avatarMobileURL := replaceRE "(-240)?\\.webp$" "-100.webp" $avatarURL }}
+      <div class="avatar"><img src="{{ $avatarURL | relURL }}" srcset="{{ $avatarMobileURL | relURL }} 100w, {{ $avatarURL | relURL }} 240w" sizes="(max-width: 768px) 100px, 200px" alt="avatar" width="240" height="240" loading="eager" decoding="async" fetchpriority="high"></div>
+    {{ else }}
+      <div class="avatar"><img src="{{ $avatarURL | relURL }}" alt="avatar" width="240" height="240" loading="eager" decoding="async" fetchpriority="high"></div>
+    {{ end }}
   {{ end }}
 {{ end }}
 {{ with .Site.Params.gravatar }}

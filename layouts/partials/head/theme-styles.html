@@ -1,13 +1,24 @@
 <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+{{ $needsExtendedStyles := or (eq .Section "projects") (eq .Section "posts") }}
 
 {{ if hugo.IsServer }}
-  {{ $cssOpts := (dict "targetPath" "/css/coder.css" "enableSourceMap" true) }}
-  {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts }}
-  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+  {{ $coreCssOpts := (dict "targetPath" "/css/coder-core.css" "enableSourceMap" true) }}
+  {{ $coreStyles := resources.Get "scss/coder-core.scss" | resources.ExecuteAsTemplate "style.coder-core.css" . | toCSS $coreCssOpts }}
+  <link rel="stylesheet" href="{{ $coreStyles.RelPermalink }}" media="screen">
+  {{ if $needsExtendedStyles }}
+    {{ $extendedCssOpts := (dict "targetPath" "/css/coder-extended.css" "enableSourceMap" true) }}
+    {{ $extendedStyles := resources.Get "scss/coder-extended.scss" | resources.ExecuteAsTemplate "style.coder-extended.css" . | toCSS $extendedCssOpts }}
+    <link rel="stylesheet" href="{{ $extendedStyles.RelPermalink }}" media="screen">
+  {{ end }}
 {{ else }}
-  {{ $cssOpts := (dict "targetPath" "/css/coder.css") }}
-  {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
+  {{ $coreCssOpts := (dict "targetPath" "/css/coder-core.css") }}
+  {{ $coreStyles := resources.Get "scss/coder-core.scss" | resources.ExecuteAsTemplate "style.coder-core.css" . | toCSS $coreCssOpts | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $coreStyles.RelPermalink }}" integrity="{{ $coreStyles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
+  {{ if $needsExtendedStyles }}
+    {{ $extendedCssOpts := (dict "targetPath" "/css/coder-extended.css") }}
+    {{ $extendedStyles := resources.Get "scss/coder-extended.scss" | resources.ExecuteAsTemplate "style.coder-extended.css" . | toCSS $extendedCssOpts | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $extendedStyles.RelPermalink }}" integrity="{{ $extendedStyles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
+  {{ end }}
 {{ end }}
 
 {{ if .Site.Params.rtl }}

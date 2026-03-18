@@ -235,6 +235,16 @@ figure {
   transition: $null-transition;
 }
 
+.theme-switching * {
+  $null-transition: none !important;
+
+  -webkit-transition: $null-transition;
+  -moz-transition: $null-transition;
+  -ms-transition: $null-transition;
+  -o-transition: $null-transition;
+  transition: $null-transition;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
