@@ -29,11 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function setTheme(theme) {
+    // Disable CSS transitions briefly so theme changes feel instant.
+    body.classList.add('theme-switching');
     body.classList.remove('colorscheme-auto');
     let inverse = theme === 'dark' ? 'light' : 'dark';
     body.classList.remove('colorscheme-' + inverse);
     body.classList.add('colorscheme-' + theme);
     document.documentElement.style['color-scheme'] = theme;
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            body.classList.remove('theme-switching');
+        });
+    });
 
     function waitForElm(selector) {
         return new Promise(resolve => {
