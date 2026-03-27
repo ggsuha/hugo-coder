@@ -30,17 +30,29 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 20%;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6rem;
+  margin: 2.4rem auto 0;
+  width: 100%;
+  max-width: 22rem;
 
   a, button {
     color: #212121;
   }
 
+  .page-indicator {
+    font-size: 1.4rem;
+    font-weight: 600;
+    min-width: 5.6rem;
+    text-align: center;
+  }
+
   button {
     background-color: transparent;
     border: none;
+    line-height: 1;
+    padding: 0;
   }
 
   a:hover,
@@ -54,5 +66,15 @@
   button:disabled {
     cursor: default;
     opacity: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .paginate-simple {
+    margin-top: 4rem;
+    max-width: 100%;
+    column-gap: 4rem;
+    justify-content: center;
+    padding: 0;
   }
 }
