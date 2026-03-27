@@ -25,9 +25,10 @@
     <div class="project" data-js-pagination="projects">
       {{ range .RegularPages }}
       <div class="item" data-project-item>
+          {{ $projectDescription := (.Description | default .Summary | plainify | truncate 150) }}
           <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
           <p class="description">
-            {{ .Description }}
+            {{ $projectDescription }}
           </p>
         </div>
         {{ end }}

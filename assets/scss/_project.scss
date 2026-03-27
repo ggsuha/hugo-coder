@@ -25,6 +25,12 @@
 }
 .project .item .description {
   margin-top: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.65;
+  min-height: calc(1.65em * 4);
   /* text-align: justify;
   text-justify: inter-word; */
 }
@@ -42,6 +48,11 @@
   }
   .project .item:nth-child(odd) {
       padding-right: 0;
+  }
+
+  .project .item .description {
+      -webkit-line-clamp: 3;
+      min-height: calc(1.65em * 3);
   }
 }
 
